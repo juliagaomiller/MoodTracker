@@ -6,12 +6,14 @@
 //  Copyright © 2016 Julia Miller. All rights reserved.
 /*
  TO DOs: 
- - ENTITY: mood: nsdate, commentary, score,
+ - http://stackoverflow.com/questions/24215117/how-to-recognize-swipe-in-all-4-directions
+ - http://stackoverflow.com/questions/39764088/swipe-gesture-in-swift-3
  -
- -
+ - create reminderVC
+ - add swipe down to reminder vc to close it.
  */
 //
-//commit: "Build runs. No functions and no Mood entity yet. Working on carousel."
+//commit: "Carousel works, and displays date and time. Mood Entity created."
 
 import UIKit
 
@@ -32,7 +34,8 @@ class LogMoodVC: UIViewController, iCarouselDelegate, iCarouselDataSource {
         
         scrollToMostRecentMoodScore()
         
-        setDateAndTimeLabels()
+        updateDateAndTimeLabels()
+        _ = Timer.scheduledTimer(timeInterval: 10.0, target: self, selector: #selector(self.updateDateAndTimeLabels), userInfo: nil, repeats: true)
         
     }
     
@@ -40,10 +43,25 @@ class LogMoodVC: UIViewController, iCarouselDelegate, iCarouselDataSource {
         print("saved")
         let index = carousel.currentItemIndex
         UserDefaults.standard.set(index, forKey: "MoodScore")
+        
+        //CREATE ENTITY
     }
     
-    func setDateAndTimeLabels(){
-        let date = NSDate()
+    func updateDateAndTimeLabels(){
+        let df = DateFormatter()
+        df.timeStyle = .short
+        
+        let timeString = "\(df.string(from: Date()))"
+        if timeString != timeLabel.text {
+            timeLabel.text = timeString
+        }
+        df.timeStyle = .none
+        df.dateStyle = .long
+        let dateString = "\(df.string(from: Date()))"
+        if dateString != timeLabel.text {
+            dateLabel.text = dateString
+        }
+        
     }
 
     //functions involving iCarousel
