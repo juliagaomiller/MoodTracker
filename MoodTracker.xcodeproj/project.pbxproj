@@ -19,6 +19,9 @@
 		19AD91561DB2E0F600C1E082 /* DayVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19AD91551DB2E0F600C1E082 /* DayVC.swift */; };
 		19AD91581DB2E10A00C1E082 /* MonthVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19AD91571DB2E10A00C1E082 /* MonthVC.swift */; };
 		19AD915A1DB2E13B00C1E082 /* WeekVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19AD91591DB2E13B00C1E082 /* WeekVC.swift */; };
+		19D1800C1DB81D37006E43B7 /* ReminderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19D1800B1DB81D37006E43B7 /* ReminderVC.swift */; };
+		19D1800E1DB821C8006E43B7 /* PageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19D1800D1DB821C8006E43B7 /* PageVC.swift */; };
+		19D180101DB82580006E43B7 /* AnalysisVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19D1800F1DB82580006E43B7 /* AnalysisVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +41,9 @@
 		19AD91551DB2E0F600C1E082 /* DayVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayVC.swift; sourceTree = "<group>"; };
 		19AD91571DB2E10A00C1E082 /* MonthVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthVC.swift; sourceTree = "<group>"; };
 		19AD91591DB2E13B00C1E082 /* WeekVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeekVC.swift; sourceTree = "<group>"; };
+		19D1800B1DB81D37006E43B7 /* ReminderVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReminderVC.swift; sourceTree = "<group>"; };
+		19D1800D1DB821C8006E43B7 /* PageVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageVC.swift; sourceTree = "<group>"; };
+		19D1800F1DB82580006E43B7 /* AnalysisVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalysisVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,7 +111,10 @@
 		19AD91521DB2E08E00C1E082 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				19D1800D1DB821C8006E43B7 /* PageVC.swift */,
 				19AD91531DB2E0D800C1E082 /* LogMoodVC.swift */,
+				19D1800F1DB82580006E43B7 /* AnalysisVC.swift */,
+				19D1800B1DB81D37006E43B7 /* ReminderVC.swift */,
 				19AD91551DB2E0F600C1E082 /* DayVC.swift */,
 				19AD91591DB2E13B00C1E082 /* WeekVC.swift */,
 				19AD91571DB2E10A00C1E082 /* MonthVC.swift */,
@@ -186,14 +195,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				19D180101DB82580006E43B7 /* AnalysisVC.swift in Sources */,
 				19AD91541DB2E0D800C1E082 /* LogMoodVC.swift in Sources */,
 				19AD91561DB2E0F600C1E082 /* DayVC.swift in Sources */,
 				19AD915A1DB2E13B00C1E082 /* WeekVC.swift in Sources */,
 				19A7741C1DB6D79600EAD5D1 /* Mood+CoreDataProperties.swift in Sources */,
 				19AD91581DB2E10A00C1E082 /* MonthVC.swift in Sources */,
 				19AD91441DB2DA8C00C1E082 /* MoodTracker.xcdatamodeld in Sources */,
+				19D1800E1DB821C8006E43B7 /* PageVC.swift in Sources */,
 				197C61FE1DB5732E00C8524E /* iCarousel.m in Sources */,
 				19A7741B1DB6D79600EAD5D1 /* Mood+CoreDataClass.swift in Sources */,
+				19D1800C1DB81D37006E43B7 /* ReminderVC.swift in Sources */,
 				19AD913C1DB2DA8C00C1E082 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

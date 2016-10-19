@@ -6,14 +6,14 @@
 //  Copyright © 2016 Julia Miller. All rights reserved.
 /*
  TO DOs: 
- - http://stackoverflow.com/questions/24215117/how-to-recognize-swipe-in-all-4-directions
- - http://stackoverflow.com/questions/39764088/swipe-gesture-in-swift-3
+ - prepare views for day and week tab in preparation for saving entity
+ - 
  -
  - create reminderVC
  - add swipe down to reminder vc to close it.
  */
 //
-//commit: "Carousel works, and displays date and time. Mood Entity created."
+//commit: "Mood entities are being saved and displayed in day and week tab"
 
 import UIKit
 
@@ -23,8 +23,6 @@ class LogMoodVC: UIViewController, iCarouselDelegate, iCarouselDataSource {
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     
-
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -36,7 +34,6 @@ class LogMoodVC: UIViewController, iCarouselDelegate, iCarouselDataSource {
         
         updateDateAndTimeLabels()
         _ = Timer.scheduledTimer(timeInterval: 10.0, target: self, selector: #selector(self.updateDateAndTimeLabels), userInfo: nil, repeats: true)
-        
     }
     
     @IBAction func saveMood(_ sender: AnyObject) {

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="ejt-fz-0GH">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -7,10 +7,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--ReminderVC-->
         <scene sceneID="CQc-Zp-Klb">
             <objects>
-                <viewController id="d8n-c0-Fzp" sceneMemberID="viewController">
+                <viewController id="d8n-c0-Fzp" customClass="ReminderVC" customModule="MoodTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Nd4-uZ-RE0"/>
                         <viewControllerLayoutGuide type="bottom" id="OfI-jX-Ofb"/>
@@ -42,10 +42,18 @@
             </objects>
             <point key="canvasLocation" x="-522.39999999999998" y="-506.89655172413796"/>
         </scene>
+        <!--PageVC-->
+        <scene sceneID="4wI-SR-Ejp">
+            <objects>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" pageSpacing="4" navigationOrientation="horizontal" spineLocation="none" id="ejt-fz-0GH" customClass="PageVC" customModule="MoodTracker" customModuleProvider="target" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QDk-nZ-Iu8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1559" y="188"/>
+        </scene>
         <!--Data Source-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="LogMoodVC" customModule="MoodTracker" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LogMoodVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="LogMoodVC" customModule="MoodTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -134,7 +142,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="uvd-aM-9Va">
             <objects>
-                <tabBarController id="Gpl-Xf-AhU" sceneMemberID="viewController">
+                <tabBarController restorationIdentifier="TabBarVC" storyboardIdentifier="TabBarVC" id="Gpl-Xf-AhU" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="DJ6-XD-a1N">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -197,6 +205,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ngy-7S-NbP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1684" y="279"/>
+        </scene>
+        <!--AnalysisVC-->
+        <scene sceneID="OaU-ro-31F">
+            <objects>
+                <viewController storyboardIdentifier="AnalysisVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Baw-5M-asu" customClass="AnalysisVC" customModule="MoodTracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="win-cC-p40"/>
+                        <viewControllerLayoutGuide type="bottom" id="iD2-Rk-fdO"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="FCm-Di-fed">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3KO-mg-bIH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2668" y="81"/>
         </scene>
         <!--Item-->
         <scene sceneID="Jb9-wz-lgP">
