@@ -5,6 +5,8 @@
 //  Created by Julia Miller on 10/19/16.
 //  Copyright © 2016 Julia Miller. All rights reserved.
 //
+// Note: link below helped a lot with figuring out how to move the UIPageControl.
+//https://spin.atomicobject.com/2016/02/11/move-uipageviewcontroller-dots/
 
 import UIKit
 
@@ -29,6 +31,32 @@ class PageVC: UIPageViewController, UIPageViewControllerDelegate, UIPageViewCont
         }
     }
     
+    
+    /*
+     time out!
+     when you come back scroll right and read and follow atomicproject instructions. the project xcode is to your left. 
+ 
+ */
+    
+//    override func viewDidLayoutSubviews() {
+//        super.viewDidLayoutSubviews()
+//        for view in self.view.subviews {
+//            if view is UIScrollView {
+//                view.frame = UIScreen.main.bounds
+//            } else if view is UIPageControl {
+//                print("Bounds: ", view.bounds)
+//                view.tintColor = UIColor.black
+//                print("Tint = ", view.tintColor)
+//                view.backgroundColor = UIColor.clear
+//                let horizontal = NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.centerX, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.centerX, multiplier: 1, constant: 0)
+//                let top = NSLayoutConstraint(item: view, attribute: .top, relatedBy: .equal, toItem: self.view, attribute: .top, multiplier: 1.0, constant: 100)
+//                NSLayoutConstraint.activate([horizontal, top])
+//                view.translatesAutoresizingMaskIntoConstraints = false
+////                print("page control constraints", view.constraints)
+//            }
+//        }
+//    }
+    
     func checkSwipeDirection(vc: UIViewController, direction: Int) -> UIViewController? {
         guard let currentIndex = VCArray.index(of: vc) else {
             print("PageVC - vc is not in VCArray")
@@ -41,9 +69,6 @@ class PageVC: UIPageViewController, UIPageViewControllerDelegate, UIPageViewCont
         guard nextIndex < VCArray.count else{
             return VCArray.first
         }
-//        guard VCArray.count > nextIndex else {
-//            return nil
-//        }
         return VCArray[nextIndex]
     }
     
@@ -51,17 +76,6 @@ class PageVC: UIPageViewController, UIPageViewControllerDelegate, UIPageViewCont
         
         let vc = checkSwipeDirection(vc: viewController, direction: -1)
         return vc
-//        guard let currentIndex = VCArray.index(of: viewController) else {
-//            return nil
-//        }
-//        let previousIndex = currentIndex - 1
-//        guard previousIndex >= 0 else{
-//            return VCArray.last
-//        }
-//        guard VCArray.count > previousIndex else {
-//            return nil
-//        }
-//        return VCArray[previousIndex]
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {

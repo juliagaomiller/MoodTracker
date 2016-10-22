@@ -6,11 +6,13 @@
 //  Copyright © 2016 Julia Miller. All rights reserved.
 /*
  TO DOs: 
+ - put page control at top of screen
+ first thing! look at youtube video 26min in
+ https://www.youtube.com/watch?v=oX9o-DnMHsE
+ https://spin.atomicobject.com/2016/02/11/move-uipageviewcontroller-dots/
+ http://stackoverflow.com/questions/21045630/how-to-put-the-uipagecontrol-element-on-top-of-the-sliding-pages-within-a-uipage
+ 
  - prepare views for day and week tab in preparation for saving entity
- - 
- -
- - create reminderVC
- - add swipe down to reminder vc to close it.
  */
 //
 //commit: "Mood entities are being saved and displayed in day and week tab"
@@ -22,6 +24,8 @@ class LogMoodVC: UIViewController, iCarouselDelegate, iCarouselDataSource {
     @IBOutlet weak var carousel: iCarousel!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
+    //outlet for the textfield is customized so user can only write so much (create customTextField?)
+    //also need to remember to move view up when keyboard is showing up. 
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,12 +40,13 @@ class LogMoodVC: UIViewController, iCarouselDelegate, iCarouselDataSource {
         _ = Timer.scheduledTimer(timeInterval: 10.0, target: self, selector: #selector(self.updateDateAndTimeLabels), userInfo: nil, repeats: true)
     }
     
+    
     @IBAction func saveMood(_ sender: AnyObject) {
         print("saved")
         let index = carousel.currentItemIndex
         UserDefaults.standard.set(index, forKey: "MoodScore")
         
-        //CREATE ENTITY
+        //create the entity
     }
     
     func updateDateAndTimeLabels(){
