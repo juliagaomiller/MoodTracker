@@ -11,21 +11,22 @@ import CoreData
 
 class DayVC: UIViewController {
     
-    //create a static var otherDate (i think thats what you call it if you want other vcs to be able to access it)
-    //var currentDate: NSDate!
-    //var displayedDate: NSDate!
+    static var otherDate: NSDate?
     
-    //lazy var frc to retrieve from core data the moods. 
-    //then try to put this moodArray into a static var that can be accessed by weekVC and dayVC.
+    var currentDate: NSDate!
+    var displayedDate: NSDate!
+    
+    var loggedMoods = [Mood]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        loggedMoods = LogMoodVC.loggedMoods
+        currentDate = NSDate()
+        
         //always start on this page if you just opened app.
         
-        //let currentDate = NSDate()
 
-        // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
