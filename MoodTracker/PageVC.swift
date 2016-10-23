@@ -10,7 +10,9 @@
 
 import UIKit
 
-class PageVC: UIPageViewController, UIPageViewControllerDelegate, UIPageViewControllerDataSource {
+class PageVC: UIPageViewController, UIPageViewControllerDataSource {
+    
+    weak var pageVCdelegate: PageVCDelegate?
 
     lazy var VCArray: [UIViewController] = {
         return [self.VCInstance(storyID: "LogMoodVC"),
@@ -29,33 +31,9 @@ class PageVC: UIPageViewController, UIPageViewControllerDelegate, UIPageViewCont
         if let firstVC = VCArray.first {
             setViewControllers([firstVC], direction: .forward, animated: true, completion: nil)
         }
+        
+        pageVCdelegate?.pageVC(pageVC: self, didUpdatePageCount: VCArray.count)
     }
-    
-    
-    /*
-     time out!
-     when you come back scroll right and read and follow atomicproject instructions. the project xcode is to your left. 
- 
- */
-    
-//    override func viewDidLayoutSubviews() {
-//        super.viewDidLayoutSubviews()
-//        for view in self.view.subviews {
-//            if view is UIScrollView {
-//                view.frame = UIScreen.main.bounds
-//            } else if view is UIPageControl {
-//                print("Bounds: ", view.bounds)
-//                view.tintColor = UIColor.black
-//                print("Tint = ", view.tintColor)
-//                view.backgroundColor = UIColor.clear
-//                let horizontal = NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.centerX, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.centerX, multiplier: 1, constant: 0)
-//                let top = NSLayoutConstraint(item: view, attribute: .top, relatedBy: .equal, toItem: self.view, attribute: .top, multiplier: 1.0, constant: 100)
-//                NSLayoutConstraint.activate([horizontal, top])
-//                view.translatesAutoresizingMaskIntoConstraints = false
-////                print("page control constraints", view.constraints)
-//            }
-//        }
-//    }
     
     func checkSwipeDirection(vc: UIViewController, direction: Int) -> UIViewController? {
         guard let currentIndex = VCArray.index(of: vc) else {
@@ -82,18 +60,22 @@ class PageVC: UIPageViewController, UIPageViewControllerDelegate, UIPageViewCont
         let vc = checkSwipeDirection(vc: viewController, direction: 1)
         return vc
     }
-    
-    func presentationCount(for pageViewController: UIPageViewController) -> Int {
-        return VCArray.count
-    }
-    
-    func presentationIndex(for pageViewController: UIPageViewController) -> Int {
-        guard let vc = viewControllers?.first,
-            let index = VCArray.index(of: vc) else {
-                return 0
+}
+
+extension PageVC: UIPageViewControllerDelegate {
+    func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
+        guard let firstViewController = viewControllers?.first,
+            let index = VCArray.index(of: firstViewController)
+            else {
+                return
         }
-        return index
+        pageVCdelegate?.pageVC(pageVC: self, didUpdatePageIndex: index)
     }
+}
 
-
+protocol PageVCDelegate: class {
+    
+    func pageVC(pageVC: PageVC, didUpdatePageCount count: Int)
+    
+    func pageVC(pageVC: PageVC, didUpdatePageIndex index: Int)
 }
