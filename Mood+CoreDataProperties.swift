@@ -2,7 +2,7 @@
 //  Mood+CoreDataProperties.swift
 //  MoodTracker
 //
-//  Created by Julia Miller on 10/18/16.
+//  Created by Julia Miller on 10/22/16.
 //  Copyright © 2016 Julia Miller. All rights reserved.
 //
 
@@ -16,8 +16,9 @@ extension Mood {
         return NSFetchRequest<Mood>(entityName: "Mood");
     }
 
-    @NSManaged public var date: NSDate?
-    @NSManaged public var score: Int16
     @NSManaged public var commentary: String?
+    @NSManaged public var date: NSDate?
+    @NSManaged public var score: Int32
+    @NSManaged public var weekday: Int32
 
 }

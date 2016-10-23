@@ -28,7 +28,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rZ9-Q8-Qkd" id="p6T-Rx-gdC">
-                                            <frame key="frameInset" width="375" height="43"/>
+                                            <frame key="frameInset" width="375" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -175,6 +175,7 @@
                     </view>
                     <connections>
                         <outlet property="carousel" destination="Ie7-0m-CiL" id="Zp9-vf-Nbq"/>
+                        <outlet property="commentaryTF" destination="E33-IF-IGi" id="1nD-s0-0dG"/>
                         <outlet property="dateLabel" destination="Tta-36-zx5" id="rUH-D6-kYm"/>
                         <outlet property="timeLabel" destination="y1E-yR-87z" id="biy-go-baq"/>
                     </connections>
@@ -234,7 +235,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2nD-P3-5hZ" id="Vg7-70-EBJ">
-                                    <frame key="frameInset" width="375" height="43"/>
+                                    <frame key="frameInset" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -298,19 +299,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aB4-NW-hDJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1751" y="-392"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="VFk-sn-1da">
-            <objects>
-                <viewController id="oWI-uJ-sJh" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="g1t-LD-1jw">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="nNX-Op-zHW" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
         </scene>
     </scenes>
 </document>

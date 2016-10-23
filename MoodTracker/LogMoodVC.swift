@@ -6,27 +6,34 @@
 //  Copyright © 2016 Julia Miller. All rights reserved.
 /*
  TO DOs: 
- - put page control at top of screen
- first thing! look at youtube video 26min in
- https://www.youtube.com/watch?v=oX9o-DnMHsE
- https://spin.atomicobject.com/2016/02/11/move-uipageviewcontroller-dots/
- http://stackoverflow.com/questions/21045630/how-to-put-the-uipagecontrol-element-on-top-of-the-sliding-pages-within-a-uipage
+- to do: outlet for the textfield is customized so user can only write so much (create customTextField?)
+- to do: also need to remember to move view up when keyboard is showing up.
  
- - prepare views for day and week tab in preparation for saving entity
+ commit: "Mood entities are being saved and displayed in day and week tab"
  */
-//
-//commit: "Mood entities are being saved and displayed in day and week tab"
+
 
 import UIKit
+import CoreData
 
-class LogMoodVC: UIViewController, iCarouselDelegate, iCarouselDataSource {
+class LogMoodVC: UIViewController, iCarouselDelegate, iCarouselDataSource, NSFetchedResultsControllerDelegate {
     
+    //PROPERTIES---------------------------
     @IBOutlet weak var carousel: iCarousel!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
-    //outlet for the textfield is customized so user can only write so much (create customTextField?)
-    //also need to remember to move view up when keyboard is showing up. 
+    //will probably need a custom tf
+    @IBOutlet weak var commentaryTF: UITextField!
     
+    //All the Mood entities that you have in CoreData.
+    static var loggedMoods = [Mood]()
+    
+    var frc: NSFetchedResultsController<Mood>?
+
+    //Allow for a previous Mood from current day to be updated (like in SomeJunk app).
+    var editMood: Mood?
+    
+    //FUNCTIONS----------------------------
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -34,20 +41,47 @@ class LogMoodVC: UIViewController, iCarouselDelegate, iCarouselDataSource {
         carousel.delegate = self
         carousel.dataSource = self
         
+        //Actually might need this functions in viewWillAppear? Will see...
+        if editMood != nil {
+            //scrollToMood(updatePreviousMood)
+        }
+        //else scrollToMood(nil)
+        //change scrollToMostRecentMood so that it takes in a Mood optional to account for updatePreviousMood
         scrollToMostRecentMoodScore()
         
+        //This is fine in viewDidLoad because it will keep repeating
         updateDateAndTimeLabels()
         _ = Timer.scheduledTimer(timeInterval: 10.0, target: self, selector: #selector(self.updateDateAndTimeLabels), userInfo: nil, repeats: true)
+        
+        updateLoggedMoods()
     }
     
-    
     @IBAction func saveMood(_ sender: AnyObject) {
-        print("saved")
+        
+        print("COMMENT save pressed.")
+        
+        //Save the most recent saved mood score to UserDefaults 
+        //so that carousel will scroll to this score next time the page loads.
         let index = carousel.currentItemIndex
         UserDefaults.standard.set(index, forKey: "MoodScore")
         
-        //create the entity
+        var mood: Mood!
+        
+        //if updatePreviousMood is not nil then mood = updatedpreviousmood
+        
+        mood = Mood(context: delegate.persistentContainer.viewContext)
+        mood.score = Int32(index)
+        
+        if let comment = commentaryTF.text {
+            mood.commentary = comment
+        }
+        
+        delegate.saveContext()
+        updateLoggedMoods()
+        //disable save button for three seconds?
     }
+    
+
     
     func updateDateAndTimeLabels(){
         let df = DateFormatter()
@@ -65,20 +99,61 @@ class LogMoodVC: UIViewController, iCarouselDelegate, iCarouselDataSource {
         }
         
     }
-
-    //functions involving iCarousel
     
+    //Functions involving CoreData.
+    func updateLoggedMoods(){
+        //Reset fetchedResultsController so that it is empty before you perform the fetch.
+        resetFRC()
+        
+        do {
+            try frc?.performFetch()
+        } catch {
+            let error = error as NSError
+            print("COMMENT ERROR performFetch() was not successful. ", error.userInfo)
+            return
+        }
+        
+        guard let fetchedObjects = frc?.fetchedObjects else {
+            print("COMMENT ERROR There are currently no moods saved.")
+            return
+        }
+        
+        LogMoodVC.loggedMoods.removeAll()
+        for mood in fetchedObjects {
+            LogMoodVC.loggedMoods.append(mood)
+            let df = DateFormatter()
+            df.timeStyle = .short
+            let timeString = df.string(from: mood.date as! Date)
+            
+            print("COMMENT Time saved ", timeString)
+        }
+        
+        print("COMMENT loggedMoods array count", LogMoodVC.loggedMoods.count)
+        
+    }
+    
+    func resetFRC() {
+        let request = NSFetchRequest<Mood>(entityName: "Mood")
+        let sortByDate = NSSortDescriptor(key: "date", ascending: true)
+        request.sortDescriptors = [sortByDate]
+        let controller = NSFetchedResultsController<Mood>(fetchRequest: request, managedObjectContext: delegate.persistentContainer.viewContext, sectionNameKeyPath: nil, cacheName: nil)
+        controller.delegate = self
+        frc = controller
+    }
+
+    //Functions involving iCarousel.
     func scrollToMostRecentMoodScore(){
         let launchedBefore = UserDefaults.standard.bool(forKey: "LaunchedBefore")
-        if launchedBefore {
-            let index = UserDefaults.standard.integer(forKey: "MoodScore")
-            print("last logged mood score:", index)
-            carousel.scrollToItem(at: index, animated: false)
-        } else {
+        if !launchedBefore {
+            print("COMMENT This is first launch.")
             //first launch
             UserDefaults.standard.set(true, forKey: "LaunchedBefore")
             let index: Int = 4
             UserDefaults.standard.set(index, forKey: "MoodScore")
+            carousel.scrollToItem(at: index, animated: false)
+        } else {
+            let index = UserDefaults.standard.integer(forKey: "MoodScore")
+            print("COMMENT last logged mood score is", index)
             carousel.scrollToItem(at: index, animated: false)
         }
     }
@@ -105,3 +180,5 @@ class LogMoodVC: UIViewController, iCarouselDelegate, iCarouselDataSource {
         return value
     }
 }
+
+

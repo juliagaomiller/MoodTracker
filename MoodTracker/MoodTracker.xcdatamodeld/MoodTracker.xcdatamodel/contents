@@ -3,9 +3,10 @@
     <entity name="Mood" representedClassName=".Mood" syncable="YES">
         <attribute name="commentary" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="score" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="score" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="weekday" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Mood" positionX="-63" positionY="-18" width="128" height="90"/>
+        <element name="Mood" positionX="-63" positionY="-18" width="128" height="105"/>
     </elements>
 </model>
