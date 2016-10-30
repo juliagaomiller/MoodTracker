@@ -10,56 +10,27 @@ import UIKit
 
 class WeekVC: UITableViewController {
     
-    //brainstorm...what if we loaded all of the Mood entities the moment the app turned on;
-    //So no filter. 
-    //that way, they will populate the calendar.
-    
-    //array[m, t, w, th, f, s, su]
-    
-    //var highlightedDate
+    private var daysOfWeek = ["M","T","W","Th","F","S","Su"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        //highlightedDate = static.displayedDate
-        //loadNewDate(static.displayedDate)
     }
     
-    /*
-     func everytime the tab switches back to week tab, check if universal displayedDate has changed
-     if displayedDate != highlightedDate
-     loadNewdate
-     
- */
     
-    /*
-     func loadNewDate() {
-     determine which day of the week it is...
-     
-     }
- */
-
-    // MARK: - Table view data source
+    
+    //---Tableview Functions---
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        return daysOfWeek.count
     }
     
-    //number of cells will be array.count
-    
-    
-    /*
-     what each cell will look like at index
-     the label on the far left will have the array[index]
-    */
-    
-    
-
-  
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell()
+        return cell
+    }
 
 }

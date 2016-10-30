@@ -81,8 +81,6 @@ class LogMoodVC: UIViewController, iCarouselDelegate, iCarouselDataSource, NSFet
         //disable save button for three seconds?
     }
     
-
-    
     func updateDateAndTimeLabels(){
         let df = DateFormatter()
         df.timeStyle = .short

@@ -9,27 +9,18 @@
 import UIKit
 
 class MonthVC: UIViewController {
+    
+    /*
+    how to create a custom calendar?
+    have no fear!
+    go to this link first: http://stackoverflow.com/questions/34732771/creating-a-custom-calendar-month-view-in-ios
+    which will have a link to here: https://github.com/erica/NSDate-Extensions
+    which will have a link to here: https://github.com/erica/SwiftDates
+    */
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
