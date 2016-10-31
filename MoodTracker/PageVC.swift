@@ -42,10 +42,12 @@ class PageVC: UIPageViewController, UIPageViewControllerDataSource {
         }
         let nextIndex = currentIndex + direction
         guard nextIndex >= 0 else{
-            return VCArray.last
+            return nil
+                //VCArray.last
         }
         guard nextIndex < VCArray.count else{
-            return VCArray.first
+            return nil
+                //VCArray.first
         }
         return VCArray[nextIndex]
     }

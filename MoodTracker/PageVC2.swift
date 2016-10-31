@@ -9,6 +9,8 @@
 import UIKit
 
 class PageVC2: UIViewController, PageVCDelegate {
+    
+    //There are two pageVCs because we wanted to move the UIPageControl to the top of the page.
 
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var pageControl: UIPageControl!

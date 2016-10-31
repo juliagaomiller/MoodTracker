@@ -21,15 +21,16 @@ class WeekMoodCell: UITableViewCell {
         //
     }
     
-    func configureCell(mood: Mood){
-        let df = DateFormatter()
-        df.dateStyle = .short
-        dateLabel.text = df.string(from: mood.date as! Date)
-        guard let image = UIImage(named: "\(mood.score)") else {
-            print("COMMENT ERROR could not find image named", mood.score)
-            return
+    func configureCell(mood: WeekMood, index: Int){
+        var d = ["M", "T", "W", "Th", "F", "S", "Su"]
+        weekLabel.text = d[index]
+        invisibleBtn.isEnabled = true
+        if mood.numberOfCommentary == "0"{
+            invisibleBtn.isEnabled = false
         }
-        dayAverageImage.image = image
+        dateLabel.text = mood.date
+        dayAverageImage.image = mood.image
+        numberOfEdits.text = mood.numberOfEdits
+        numberOfComments.text = mood.numberOfCommentary
     }
-
 }
