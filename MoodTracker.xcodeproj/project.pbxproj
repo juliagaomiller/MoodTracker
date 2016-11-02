@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1960B1381DCA08A9001A6D18 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1960B1371DCA08A9001A6D18 /* DateExtension.swift */; };
 		197C61FE1DB5732E00C8524E /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 197C61FD1DB5732E00C8524E /* iCarousel.m */; };
 		19AD913C1DB2DA8C00C1E082 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19AD913B1DB2DA8C00C1E082 /* AppDelegate.swift */; };
 		19AD91411DB2DA8C00C1E082 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19AD913F1DB2DA8C00C1E082 /* Main.storyboard */; };
@@ -29,6 +30,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1960B1371DCA08A9001A6D18 /* DateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		197C61FB1DB5732E00C8524E /* MoodTracker-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MoodTracker-Bridging-Header.h"; sourceTree = "<group>"; };
 		197C61FC1DB5732E00C8524E /* iCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCarousel.h; sourceTree = "<group>"; };
 		197C61FD1DB5732E00C8524E /* iCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCarousel.m; sourceTree = "<group>"; };
@@ -101,6 +103,7 @@
 		19AD91501DB2E07F00C1E082 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				1960B1371DCA08A9001A6D18 /* DateExtension.swift */,
 				197C61FC1DB5732E00C8524E /* iCarousel.h */,
 				197C61FD1DB5732E00C8524E /* iCarousel.m */,
 				19D1801A1DBC600A006E43B7 /* Mood+CoreDataClass.swift */,
@@ -232,6 +235,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				19D180101DB82580006E43B7 /* AnalysisVC.swift in Sources */,
+				1960B1381DCA08A9001A6D18 /* DateExtension.swift in Sources */,
 				19AD91541DB2E0D800C1E082 /* LogMoodVC.swift in Sources */,
 				19AD91561DB2E0F600C1E082 /* DayVC.swift in Sources */,
 				19AD915A1DB2E13B00C1E082 /* WeekVC.swift in Sources */,

@@ -15,8 +15,7 @@ class DayVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var averageImg: UIImageView!
     @IBOutlet weak var dateLabel: UILabel!
     
-    var dateToDisplay: NSDate!
-    var currentDate: NSDate!
+    static var dateToDisplay: NSDate!
     
     var allLoggedMoods = [Mood]()
     var moodsOfDay = [Mood]()
@@ -25,8 +24,7 @@ class DayVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         super.viewDidLoad()
         
         allLoggedMoods = LogMoodVC.loggedMoods
-        currentDate = NSDate()
-        dateToDisplay = currentDate
+        DayVC.dateToDisplay = NSDate()
         updateMoodsOfDay()
         
         tableView.delegate = self
@@ -51,7 +49,7 @@ class DayVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         moodsOfDay.removeAll()
         var score: Double = 0
         for mood in allLoggedMoods {
-            if NSCalendar.current.isDate(mood.date as! Date, inSameDayAs: dateToDisplay as Date){
+            if NSCalendar.current.isDate(mood.date as! Date, inSameDayAs: DayVC.dateToDisplay as Date){
                 moodsOfDay.append(mood)
                 score += Double(mood.score)
             }
